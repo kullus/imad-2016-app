@@ -4,11 +4,13 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
-var article1={
+var articles={
+var article1:{
     title:'article1|kuldeep sharma',
     heading:'article1',
     date:'5 sep 2016',
-    content:`<p>
+    content:
+                <p>
                     this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.vthis is my first article.this is my first article.this is my first article.this is my first article.this is my first article.vthis is my first article.this is my first article.this is my first article.
                 </p>
                 <p>
@@ -16,9 +18,25 @@ var article1={
                 </p>
                 <p>
                     this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.
-                </p>'
+                </p>
+},
+article2:{
+    title:'article2|kuldeep sharma',
+    heading:'article2',
+    date:'10 sep 2016',
+    content:<p>
+                    this is my second article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.vthis is my first article.this is my first article.this is my first article.this is my first article.this is my first article.vthis is my first article.this is my first article.this is my first article.
+                </p>
+},
+article3:{
+   title:'article3|kuldeep sharma',
+    heading:'article3',
+    date:'15 sep 2016',
+    content:<p>
+                    this is my third article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.vthis is my first article.this is my first article.this is my first article.this is my first article.this is my first article.vthis is my first article.this is my first article.this is my first article.
+                </p>
+} 
 };
-
 function createtemplate(data)
 {
 var title=data.title;
@@ -59,21 +77,14 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article1',function(req,res){
-    res.send(createtemplate(article1));
+app.get(':articlename',function(req,res){
+    var articlename=req.params.articelname;
+    res.send(createtemplate(articles[articlename]));
 });
-app.get('/article2',function(req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'article2.html'));
-});
-
-app.get('/article3',function(req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'article3.html'));
-});
-
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
-
+ 
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
