@@ -5,36 +5,32 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 var articles={
-var article1:{
+'article1':{
     title:'article1|kuldeep sharma',
     heading:'article1',
     date:'5 sep 2016',
-    content:
-                <p>
-                    this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.vthis is my first article.this is my first article.this is my first article.this is my first article.this is my first article.vthis is my first article.this is my first article.this is my first article.
-                </p>
-                <p>
+    content:`<p>
                     this is my first article.vthis is my first article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.
                 </p>
                 <p>
                     this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.
-                </p>
+                </p>`
 },
-article2:{
+'article2':{
     title:'article2|kuldeep sharma',
     heading:'article2',
     date:'10 sep 2016',
-    content:<p>
+    content:`<p>
                     this is my second article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.vthis is my first article.this is my first article.this is my first article.this is my first article.this is my first article.vthis is my first article.this is my first article.this is my first article.
-                </p>
+                </p>`
 },
-article3:{
+'article3':{
    title:'article3|kuldeep sharma',
     heading:'article3',
     date:'15 sep 2016',
-    content:<p>
+    content:`<p>
                     this is my third article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.vthis is my first article.this is my first article.this is my first article.this is my first article.this is my first article.vthis is my first article.this is my first article.this is my first article.
-                </p>
+                </p>`
 } 
 };
 function createtemplate(data)
@@ -43,7 +39,8 @@ var title=data.title;
 var heading=data.heading;
 var date=data.date;
 var content=data.content;
-var htmltemplate=<html>
+var htmltemplate=`
+    <html>
     <head>
         <title>
             ${title}
@@ -68,7 +65,7 @@ var htmltemplate=<html>
             </div>
             </div>
     </body>
-</html>
+</html>`
 ;
 return htmltemplate;
 }
